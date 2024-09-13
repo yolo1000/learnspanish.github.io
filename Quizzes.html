@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Spanish</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            margin: 0;
+        }
+        .answer {
+            color: green;
+            display: none;
+        }
+    </style>
+    <script>
+        function showAnswer(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
+<body>
+    <header>
+    <h1>Beginner Spanish Quiz</h1>
+    </header>
+    <nav>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#lessons">Lessons</a>
+            <a href="index.html#vocabulary">Vocabulary</a>
+        </nav>
+        
+    </nav>
+
+
+    <script>
+        function showAnswer(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
+    <main>
+
+    <div class="question">
+        <h3>1. How do you say "Hello" in Spanish?</h3>
+        <button onclick="showAnswer('answer1')">Show Answer</button>
+        <p id="answer1" class="answer">Hola</p>
+    </div>
+    <div class="question">
+        <h3>2. How do you say "Thank you" in Spanish?</h3>
+        <button onclick="showAnswer('answer2')">Show Answer</button>
+        <p id="answer2" class="answer">Gracias</p>
+    </div>
+    <div class="question">
+        <h3>3. How do you say "Goodbye" in Spanish?</h3>
+        <button onclick="showAnswer('answer3')">Show Answer</button>
+        <p id="answer3" class="answer">Adiós</p>
+    </div>
+    <div class="question">
+        <h3>4. How do you say "Please" in Spanish?</h3>
+        <button onclick="showAnswer('answer4')">Show Answer</button>
+        <p id="answer4" class="answer">Por favor</p>
+    </div>
+    <div class="question">
+        <h3>5. How do you say "Yes" in Spanish?</h3>
+        <button onclick="showAnswer('answer5')">Show Answer</button>
+        <p id="answer5" class="answer">Sí</p>
+    </div>
+    <div class="question">
+        <h3>6. How do you say "No" in Spanish?</h3>
+        <button onclick="showAnswer('answer6')">Show Answer</button>
+        <p id="answer6" class="answer">No</p>
+    </div>
+    <div class="question">
+        <h3>7. How do you say "Excuse me" in Spanish?</h3>
+        <button onclick="showAnswer('answer7')">Show Answer</button>
+        <p id="answer7" class="answer">Perdón</p>
+    </div>
+    <div class="question">
+        <h3>8. How do you say "I'm sorry" in Spanish?</h3>
+        <button onclick="showAnswer('answer8')">Show Answer</button>
+        <p id="answer8" class="answer">Lo siento</p>
+    </div>
+    <div class="question">
+        <h3>9. How do you say "Good morning" in Spanish?</h3>
+        <button onclick="showAnswer('answer9')">Show Answer</button>
+        <p id="answer9" class="answer">Buenos días</p>
+    </div>
+    <div class="question">
+        <h3>10. How do you say "Good night" in Spanish?</h3>
+        <button onclick="showAnswer('answer10')">Show Answer</button>
+        <p id="answer10" class="answer">Buenas noches</p>
+    </div>
+</body>
+
