@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn Spanish with interactive lessons, vocabulary, and practice quizzes.">
+    <title>Learn Spanish</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header>
+        <h1>Learn Spanish</h1>
+    </header>
+
+    <nav>
+        <a href="#home" data-section="home">Home</a>
+        <a href="#lessons" data-section="lessons">Lessons</a>
+        <a href="#vocabulary" data-section="vocabulary" id="vocabulary-nav">Vocabulary</a>
+        <a href="Quizzes.html">Quizzes</a>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section id="home" class="section">
+                <h2>Welcome to Learn Spanish</h2>
+                <p>Explore our interactive lessons, vocabulary flashcards, and quizzes to enhance your Spanish skills.</p>
+            </section>
+
+            <section id="lessons" class="section">
+                <div class="card">
+                    <h2>Interactive Lessons</h2>
+                    <p>Start your journey with our interactive Spanish lessons. From basics to advanced topics, we cover it all.</p>
+                    <audio controls>
+                        <source src="path/to/spanish_lesson_intro.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>            
+            </section>
+
+            <section id="vocabulary" class="section">
+                <div class="card" id="flashcards-container">
+                    <h2>Vocabulary Flashcards</h2>
+                    <p>Click on a flashcard to flip it and see the translation.</p>
+                </div>
+            </section>
+
+            <section id="quizzes" class="section">
+                <h2>Quizzes</h2>
+                <p>Test your Spanish skills with our interactive quizzes.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy;2024 Learn Spanish. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function speakText(text) {
+            if (!window.speechSynthesis) {
+                console.error("SpeechSynthesis is not supported in this browser.");
+                return;
+            }
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'es-ES'; // Set to Spanish
+            utterance.onstart = () => console.log("Speech started for: ", text);
+            utterance.onend = () => console.log("Speech ended for: ", text);
+            utterance.onerror = (event) => console.error("Speech synthesis error: ", event.error);
+
+            window.speechSynthesis.speak(utterance);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+    function toggleDefinition(event) {
+        const definition = event.currentTarget.querySelector('.definition');
+        definition.style.display = definition.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function loadFlashcards() {
+        const flashcards = [
+            { "term": "Alto", "definition": "Tall" },
+            { "term": "Andar", "definition": "Walk" },
+        ];
+
+        const container = document.getElementById('flashcards-container');
+        container.innerHTML = '<h2>Vocabulary Flashcards</h2><p>Click on a flashcard to flip it and see the translation.</p>';
+
+        flashcards.forEach(item => {
+            const flashcard = document.createElement('div');
+            flashcard.className = 'flashcard';
+            flashcard.innerHTML = `
+                <div class="term">${item.term}</div>
+                <div class="definition">${item.definition}</div>
+                <button class="speak-button" onclick="speakText('${item.term.replace(/'/g, "\\'")}')">Show Definition</button>
+            `;
+            flashcard.addEventListener('click', toggleDefinition);
+            container.appendChild(flashcard);
+        });
+    }
+
+    function showSection(sectionId) {
+        document.querySelectorAll('.section').forEach(section => {
+            section.classList.remove('active');
+        });
+        document.getElementById(sectionId).classList.add('active');
+    }
+
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(event) {
+            if (this.getAttribute('href') !== 'Quizzes.html') {
+                event.preventDefault();
+                const sectionId = this.getAttribute('data-section');
+                showSection(sectionId);
+
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+
+                if (sectionId === 'vocabulary') {
+                    loadFlashcards();
+                }
+            }
+        });
+    });
+
+    // Initialize the home section as visible
+    showSection('home');
+});
+
+        
+    </script>
+</body>
+</html>
